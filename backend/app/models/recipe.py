@@ -7,6 +7,7 @@ from .tag import Tag
 from .planner import Planner
 from random import randint
 from sqlalchemy.orm import Mapped
+from datetime import datetime, timezone
 
 if TYPE_CHECKING:
     from app.models import *
@@ -49,7 +50,7 @@ class Recipe(db.Model, DbModelMixin, DbModelAuthorizeMixin):
     def obj_to_dict(self) -> dict:
         res = super().obj_to_dict()
         res["planned"] = len(self.plans) > 0
-        res["planned_days"] = [plan.datetime.day for plan in self.plans if plan.datetime >= 0]
+        res["planned_days"] = [plan.datetime.day for plan in self.plans if plan.datetime.astimezone()  >= datetime.now(timezone.utc)]
         if self.photo_file:
             res["photo_hash"] = self.photo_file.blur_hash
         return res

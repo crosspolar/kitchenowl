@@ -1,3 +1,4 @@
+from datetime import datetime, timezone
 def test_meal_planning_basic(user_client_with_household, household_id, planned_recipe):
     """Test basic meal planning operations"""
     # Get planned meals and verify the recipe is there
@@ -15,7 +16,7 @@ def test_meal_planning_remove(user_client_with_household, household_id, planned_
     # Remove from meal plan
     response = user_client_with_household.delete(
         f'/api/household/{household_id}/planner/recipe/{planned_recipe}',
-        json={'day': 0}
+        json={'datetime': datetime.now(timezone.utc).replace(hour=23, minute=59, second=59, microsecond=59).isoformat() }
     )
     assert response.status_code == 200
 
@@ -33,7 +34,7 @@ def test_recent_planned_recipes(user_client_with_household, household_id, planne
     # First remove the recipe from the plan
     response = user_client_with_household.delete(
         f'/api/household/{household_id}/planner/recipe/{planned_recipe}',
-        json={'day': 0}
+        json={'datetime': datetime.now(timezone.utc).replace(hour=23, minute=59, second=59, microsecond=59).isoformat()  }
     )
     assert response.status_code == 200
 

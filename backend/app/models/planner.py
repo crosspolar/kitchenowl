@@ -3,8 +3,8 @@ from typing import Self, TYPE_CHECKING
 from app import db
 from app.helpers import DbModelMixin, DbModelAuthorizeMixin
 from sqlalchemy.orm import Mapped
-from datetime import datetime, timezone
 from sqlalchemy import DateTime
+import datetime as dt
 
 if TYPE_CHECKING:
     from app.models import *
@@ -14,7 +14,7 @@ class Planner(db.Model, DbModelMixin, DbModelAuthorizeMixin):
     __tablename__ = "planner"
 
     recipe_id: Mapped[int] = db.Column(db.Integer, db.ForeignKey("recipe.id"), primary_key=True)
-    datetime: Mapped[datetime] = db.Column(DateTime, primary_key=True)
+    datetime: Mapped[dt.datetime] = db.Column(DateTime(timezone=True), primary_key=True)
     yields: Mapped[int] = db.Column(db.Integer)
     household_id: Mapped[int] = db.Column(
         db.Integer, db.ForeignKey("household.id"), nullable=False, index=True
@@ -40,6 +40,7 @@ class Planner(db.Model, DbModelMixin, DbModelAuthorizeMixin):
 
     @classmethod
     def find_by_datetime_day(cls, household_id: int, recipe_id: int, datetime: DateTime) -> Self:
+
         return cls.query.filter(
-            cls.household_id == household_id, cls.recipe_id == recipe_id, cls.datetime.day == datetime.day
+            cls.household_id == household_id, cls.recipe_id == recipe_id, cls.datetime == datetime
         ).first()

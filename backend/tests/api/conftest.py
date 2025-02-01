@@ -1,7 +1,6 @@
 import pytest
 from app import app, db
-
-
+from datetime import datetime, timezone 
 @pytest.fixture
 def client():
     app_context = app.app_context()
@@ -196,12 +195,13 @@ def planned_recipe(user_client_with_household, household_id, recipe_with_items):
     """Fixture that creates a meal plan with the test recipe"""
     plan_data = {
         'recipe_id': recipe_with_items,
-        'day': 0  # Plan for today
+        'datetime': datetime.now(timezone.utc).replace(hour=23, minute=59, second=59, microsecond=59,tzinfo=timezone.utc).isoformat()  # Plan for today
     }
     response = user_client_with_household.post(
         f'/api/household/{household_id}/planner/recipe',
         json=plan_data
     )
+
     assert response.status_code == 200
     
     # Verify plan was created
