@@ -351,7 +351,7 @@ class _RecipePageState extends State<RecipePage> {
                                             final day = DateTime.now()
                                                 .add(Duration(days: index));
                                             return SelectDialogOption(day,
-                                                DateFormat.E().format(day));
+                                                DateFormat.EEEE().format(day));
                                           }),
                                         ));
                                 if (datetime != null) {
