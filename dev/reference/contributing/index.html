@@ -604,6 +604,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debugging
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#git-commit-message-style" class="md-nav__link">
     <span class="md-ellipsis">
       Git Commit Message Style
@@ -881,6 +890,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debugging
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#git-commit-message-style" class="md-nav__link">
     <span class="md-ellipsis">
       Git Commit Message Style
@@ -916,17 +934,16 @@
 <h3 id="fork-create-a-branch">Fork &amp; create a branch</h3>
 <p>If there is something you want to fix or add, the first step is to fork the repository.
 <a class="md-button" href="https://github.com/TomBursch/KitchenOwl"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span> Frontend</a>
-<a class="md-button" href="https://github.com/TomBursch/KitchenOwl-backend"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span> Backend</a>
 <a class="md-button" href="https://github.com/TomBursch/KitchenOwl-website"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span> Website</a></p>
-<p>Next is to create a new branch with an appropriate name. The general format that should be used is</p>
+<p>Next is to create a new branch with an appropriate name. You can use the following format:</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span><span class="s1">&#39;&lt;type&gt;/&lt;description&gt;&#39;</span>
 </code></pre></div>
 <p>The <code>type</code> is the same as the <code>type</code> that you will use for <a href="https://www.conventionalcommits.org/en/v1.0.0/#summary">your commit message</a>.</p>
 <p>The <code>description</code> is a descriptive summary of the change the PR will make.</p>
 <h3 id="general-rules">General Rules</h3>
 <ul>
-<li>All PRs should be rebased (with main) and commits squashed prior to the final merge process</li>
 <li>One PR per fix or feature</li>
+<li>All PRs should be rebased (with main) and commits squashed prior to the final merge process</li>
 </ul>
 <h3 id="setup-install">Setup &amp; Install</h3>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Frontend</label><label for="__tabbed_1_2">Backend</label><label for="__tabbed_1_3">Docs</label><label for="__tabbed_1_4">Website</label></div>
@@ -934,6 +951,7 @@
 <div class="tabbed-block">
 <ul>
 <li><a href="https://flutter.dev/docs/get-started/install">Install flutter</a></li>
+<li>Go to <code>./kitchenowl</code></li>
 <li>Install dependencies: <code>flutter packages get</code></li>
 <li>Create empty environment file: <code>touch .env</code></li>
 <li>Run app: <code>flutter run</code></li>
@@ -941,30 +959,93 @@
 </div>
 <div class="tabbed-block">
 <ul>
+<li>Go to <code>./backend</code></li>
 <li>Create a python environment <code>python3 -m venv venv</code></li>
 <li>Activate your python environment <code>source venv/bin/activate</code> (environment can be deactivated with <code>deactivate</code>)</li>
 <li>Install dependencies <code>pip3 install -r requirements.txt</code></li>
-<li>Initialize/Upgrade the sqlite database with <code>flask db upgrade</code></li>
-<li>Run debug server with <code>python3 wsgi.py</code></li>
+<li>Initialize/Upgrade the SQLite database with <code>flask db upgrade</code></li>
+<li>Run debug server with <code>python3 wsgi.py</code> (to make the server visible to any device add <code>--host=0.0.0.0</code> or the network IP address on which to provide the server)</li>
 <li>The backend should be reachable at <code>localhost:5000</code></li>
 </ul>
+<div class="admonition danger known warnings">
+<p class="admonition-title">Danger</p>
+<p>Do not run the backend using <code>flask</code> as it won't initialize the sockets properly.</p>
+</div>
+<div class="admonition info known warnings">
+<p class="admonition-title">Info</p>
+<p>When debugging the backend the following warning is shown:</p>
+<div class="highlight"><pre><span></span><code>WARNING in __init__: WebSocket transport not available. Install gevent-websocket for improved performance.
+</code></pre></div>
+<p>This only affects the backend when running in debug mode and can be ignored.</p>
+</div>
 </div>
 <div class="tabbed-block">
 <ul>
-<li>The docs are contained inside the frontend repository</li>
-<li><a href="https://www.mkdocs.org/getting-started/">Install MkDocs</a></li>
-<li><a href="https://squidfunk.github.io/mkdocs-material/getting-started/">Install Material for MkDocs</a></li>
+<li>Go to <code>./docs</code></li>
+<li>Create a python environment <code>python3 -m venv venv</code></li>
+<li>Activate your python environment <code>source venv/bin/activate</code> (environment can be deactivated with <code>deactivate</code>)</li>
+<li>Install dependencies <code>pip3 install -r requirements.txt</code></li>
 <li>Run docs: <code>mkdocs serve</code></li>
 </ul>
 </div>
 <div class="tabbed-block">
 <ul>
 <li><a href="https://gohugo.io/getting-started/quick-start/">Install Hugo</a></li>
+<li>Clone the website repository</li>
 <li>Run website: <code>hugo server</code></li>
 </ul>
 </div>
 </div>
 </div>
+<h3 id="debugging">Debugging</h3>
+<p>It is generally recommended opening the backend and the frontend projects in different VS Code instances.
+Here are some examples of configurations that work well with VS Code and allow you to set breakpoints:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Frontend</label><label for="__tabbed_2_2">Backend</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>An example configuration for <code>kitchenowl/.vscode/launch.json</code>:</p>
+<div class="highlight"><pre><span></span><code>{
+    &quot;configurations&quot;: [
+        {
+            &quot;name&quot;: &quot;kitchenowl&quot;,
+            &quot;request&quot;: &quot;launch&quot;,
+            &quot;type&quot;: &quot;dart&quot;
+        },
+        {
+            &quot;name&quot;: &quot;kitchenowl (profile mode)&quot;,
+            &quot;request&quot;: &quot;launch&quot;,
+            &quot;type&quot;: &quot;dart&quot;,
+            &quot;flutterMode&quot;: &quot;profile&quot;
+        }
+    ]
+}
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>An example configuration for <code>backend/.vscode/launch.json</code>:</p>
+<div class="highlight"><pre><span></span><code>{
+    &quot;configurations&quot;: [
+        {
+            &quot;name&quot;: &quot;Python Debugger: KitchenOwl&quot;,
+            &quot;type&quot;: &quot;debugpy&quot;,
+            &quot;request&quot;: &quot;launch&quot;,
+            &quot;program&quot;: &quot;wsgi.py&quot;,
+            &quot;jinja&quot;: true,
+            &quot;justMyCode&quot;: true,
+            &quot;gevent&quot;: true
+        }
+    ]
+}
+</code></pre></div>
+<p>To expose the backend to the complete network add the followig parameters:</p>
+<div class="highlight"><pre><span></span><code>args: [
+    &quot;--host=0.0.0.0&quot;
+]
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>If there is need to debug the interaction between two different app instances you can run flutter multiple times for different target devices. Either by running <code>flutter run -d &lt;DEVICE_ID&gt;</code> or by selecting <code>Run without Debugging</code> in VS Code multiple times. Be aware that it can be confusing to understand in which instance breakpoints are being hit when debugging multiple instances in VS Code.</p>
 <h3 id="git-commit-message-style">Git Commit Message Style</h3>
 <p>This project uses the <a href="https://www.conventionalcommits.org/en/v1.0.0/#summary">conventional commits</a> format.</p>
 <p>Example commit messages:</p>
