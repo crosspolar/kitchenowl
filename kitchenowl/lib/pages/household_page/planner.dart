@@ -406,7 +406,7 @@ class _PlannerPageState extends State<PlannerPage> {
         cancelText: AppLocalizations.of(context)!.cancel,
         options: List.generate(7, (index) {
           final day = DateTime.now().add(Duration(days: index));
-          return SelectDialogOption(day, DateFormat.E().format(day));
+          return SelectDialogOption(day, DateFormat.EEEE().format(day));
         }),
       ),
     );
