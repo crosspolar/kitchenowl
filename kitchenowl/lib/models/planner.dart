@@ -3,19 +3,19 @@ import 'package:kitchenowl/models/recipe.dart';
 
 class RecipePlan extends Model {
   final Recipe recipe;
-  final int? day;
+  final DateTime? datetime;
   final int? yields;
 
   const RecipePlan({
     required this.recipe,
-    this.day,
+    this.datetime,
     this.yields,
   });
 
   factory RecipePlan.fromJson(Map<String, dynamic> map) {
     return RecipePlan(
       recipe: Recipe.fromJson(map['recipe']),
-      day: map['day'],
+      datetime: map['datetime'],
       yields: map['yields'],
     );
   }
@@ -27,12 +27,12 @@ class RecipePlan extends Model {
   }
 
   @override
-  List<Object?> get props => [recipe, day, yields];
+  List<Object?> get props => [recipe, datetime, yields];
 
   @override
   Map<String, dynamic> toJson() => {
         "recipe_id": recipe.id,
-        if (day != null) "day": day,
+        if (datetime != null) "datetime": datetime,
         if (yields != null) "yields": yields,
       };
 

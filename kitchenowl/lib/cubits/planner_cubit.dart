@@ -17,21 +17,21 @@ class PlannerCubit extends Cubit<PlannerCubitState> {
     refresh();
   }
 
-  Future<void> remove(Recipe recipe, [int? day]) async {
+  Future<void> remove(Recipe recipe, [DateTime? datetime]) async {
     await TransactionHandler.getInstance()
         .runTransaction(TransactionPlannerRemoveRecipe(
       household: household,
       recipe: recipe,
-      day: day,
+      datetime: datetime,
     ));
     await refresh();
   }
 
-  Future<void> add(Recipe recipe, [int? day]) async {
+  Future<void> add(Recipe recipe, [DateTime? datetime]) async {
     await TransactionHandler.getInstance()
         .runTransaction(TransactionPlannerAddRecipe(
       household: household,
-      recipePlan: RecipePlan(recipe: recipe, day: day),
+      recipePlan: RecipePlan(recipe: recipe, datetime: datetime),
     ));
     await refresh();
   }
@@ -124,11 +124,12 @@ class LoadedPlannerCubitState extends PlannerCubitState {
 
   List<RecipePlan> getPlannedWithoutDay() {
     return recipePlans
-        .where((element) => element.day == null || element.day! < 0)
+        .where((element) => element.datetime == null)
         .toList();
   }
 
-  List<RecipePlan> getPlannedOfDay(int day) {
-    return recipePlans.where((element) => element.day == day).toList();
+
+  List<RecipePlan> getPlannedOfDatetimeDay(DateTime datetime) {
+    return recipePlans.where((element) => element.datetime?.day == datetime.day).toList();
   }
 }

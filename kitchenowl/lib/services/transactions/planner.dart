@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:kitchenowl/models/household.dart';
 import 'package:kitchenowl/models/planner.dart';
 import 'package:kitchenowl/models/recipe.dart';
@@ -26,7 +27,7 @@ class TransactionPlannerGetPlannedRecipes
 
     return recipes
         .expand((r) => r.plannedDays.isNotEmpty
-            ? r.plannedDays.map((day) => RecipePlan(recipe: r, day: day))
+            ? r.plannedDays.map((datetime) => RecipePlan(recipe: r, datetime: datetime))
             : [RecipePlan(recipe: r)])
         .toList();
   }
@@ -129,12 +130,12 @@ class TransactionPlannerAddRecipe extends Transaction<bool> {
 class TransactionPlannerRemoveRecipe extends Transaction<bool> {
   final Household household;
   final Recipe recipe;
-  final int? day;
+  final DateTime? datetime;
 
   TransactionPlannerRemoveRecipe({
     required this.household,
     required this.recipe,
-    this.day,
+    this.datetime,
     DateTime? timestamp,
   }) : super.internal(
           timestamp ?? DateTime.now(),
@@ -149,7 +150,7 @@ class TransactionPlannerRemoveRecipe extends Transaction<bool> {
         household: Household.fromJson(map['household']),
         recipe: Recipe.fromJson(map['recipe']),
         timestamp: timestamp,
-        day: map['day'],
+        datetime: map['datetime'],
       );
 
   @override
@@ -160,7 +161,7 @@ class TransactionPlannerRemoveRecipe extends Transaction<bool> {
     ..addAll({
       "household": household.toJsonWithId(),
       "recipe": recipe.toJsonWithId(),
-      "day": day,
+      "datetime": datetime,
     });
 
   @override
@@ -170,7 +171,7 @@ class TransactionPlannerRemoveRecipe extends Transaction<bool> {
 
   @override
   Future<bool?> runOnline() {
-    return ApiService.getInstance().removePlannedRecipe(household, recipe, day);
+    return ApiService.getInstance().removePlannedRecipe(household, recipe, datetime);
   }
 }
 

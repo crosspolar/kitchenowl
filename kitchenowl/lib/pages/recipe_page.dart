@@ -339,38 +339,27 @@ class _RecipePageState extends State<RecipePage> {
                             LoadingElevatedButton(
                               child: const Icon(Icons.calendar_month_rounded),
                               onPressed: () async {
-                                final weekdayMapping = {
-                                  0: DateTime.monday,
-                                  1: DateTime.tuesday,
-                                  2: DateTime.wednesday,
-                                  3: DateTime.thursday,
-                                  4: DateTime.friday,
-                                  5: DateTime.saturday,
-                                  6: DateTime.sunday,
-                                };
-                                int? day = await showDialog<int>(
-                                  context: context,
-                                  builder: (context) => SelectDialog(
-                                    title: AppLocalizations.of(context)!
-                                        .addRecipeToPlannerShort,
-                                    cancelText:
-                                        AppLocalizations.of(context)!.cancel,
-                                    options: weekdayMapping.entries
-                                        .map(
-                                          (e) => SelectDialogOption(
-                                            e.key,
-                                            DateFormat.E()
-                                                    .dateSymbols
-                                                    .STANDALONEWEEKDAYS[
-                                                e.value % 7],
-                                          ),
-                                        )
-                                        .toList(),
-                                  ),
-                                );
-                                if (day != null) {
+                                DateTime? datetime = await showDialog<DateTime>(
+                                    context: context,
+                                    builder: (context) => SelectDialog(
+                                          title: AppLocalizations.of(context)!
+                                              .addRecipeToPlannerShort,
+                                          cancelText:
+                                              AppLocalizations.of(context)!
+                                                  .cancel,
+                                          options: List.generate(7, (index) {
+                                            final day = DateTime.now()
+                                                .add(Duration(days: index));
+                                            return SelectDialogOption(day,
+                                                DateFormat.E().format(day));
+                                          }),
+                                        ));
+                                if (datetime != null) {
                                   await cubit.addRecipeToPlanner(
-                                    day: day >= 0 ? day : null,
+                                    datetime:
+                                        datetime.compareTo(DateTime.now()) >= 0
+                                            ? datetime
+                                            : null,
                                     updateOnAdd: widget.updateOnPlanningEdit,
                                   );
                                 }

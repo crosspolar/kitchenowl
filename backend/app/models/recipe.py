@@ -49,7 +49,7 @@ class Recipe(db.Model, DbModelMixin, DbModelAuthorizeMixin):
     def obj_to_dict(self) -> dict:
         res = super().obj_to_dict()
         res["planned"] = len(self.plans) > 0
-        res["planned_days"] = [plan.day for plan in self.plans if plan.day >= 0]
+        res["planned_days"] = [plan.datetime.day for plan in self.plans if plan.datetime >= 0]
         if self.photo_file:
             res["photo_hash"] = self.photo_file.blur_hash
         return res

@@ -41,11 +41,12 @@ def addPlannedRecipe(args, household_id):
     recipe = Recipe.find_by_id(args["recipe_id"])
     if not recipe:
         raise NotFoundRequest()
-    day = args["day"] if "day" in args else -1
-    planner = Planner.find_by_day(household_id, recipe_id=recipe.id, day=day)
+    datetime = args["datetime"] if "datetime" in args else -1
+    planner = Planner.find_by_datetime_day(household_id, recipe_id=recipe.id, datetime=datetime)
     if not planner:
-        if day >= 0:
-            old = Planner.find_by_day(household_id, recipe_id=recipe.id, day=-1)
+        if datetime >= 0:
+            # TODO not sure about that
+            old = Planner.find_by_datetime_day(household_id, recipe_id=recipe.id, datetime=-1)
             if old:
                 old.delete()
         elif len(recipe.plans) > 0:
@@ -53,7 +54,7 @@ def addPlannedRecipe(args, household_id):
         planner = Planner()
         planner.recipe_id = recipe.id
         planner.household_id = household_id
-        planner.day = day
+        planner.datetime = datetime
         if "yields" in args:
             planner.yields = args["yields"]
         planner.save()

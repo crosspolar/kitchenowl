@@ -173,7 +173,8 @@ class _PlannerPageState extends State<PlannerPage> {
                                 ),
                               ),
                             for (int day = 0; day < 7; day++)
-                              for (final plan in state.getPlannedOfDay(day))
+                              for (final plan in state.getPlannedOfDatetimeDay(
+                                  DateTime.now().add(Duration(days: day))))
                                 KitchenOwlFractionallySizedBox(
                                   widthFactor: (1 /
                                       DynamicStyling.itemCrossAxisCount(
@@ -188,7 +189,10 @@ class _PlannerPageState extends State<PlannerPage> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.stretch,
                                     children: [
-                                      if (plan == state.getPlannedOfDay(day)[0])
+                                      if (plan ==
+                                          state.getPlannedOfDatetimeDay(
+                                              DateTime.now()
+                                                  .add(Duration(days: day)))[0])
                                         Padding(
                                           padding:
                                               const EdgeInsets.only(top: 5),
@@ -211,7 +215,8 @@ class _PlannerPageState extends State<PlannerPage> {
                                           onPressed: () {
                                             cubit.remove(
                                               plan.recipe,
-                                              day,
+                                              DateTime.now()
+                                                  .add(Duration(days: day)),
                                             );
                                           },
                                           onLongPressed: () => _openRecipePage(
@@ -394,34 +399,21 @@ class _PlannerPageState extends State<PlannerPage> {
     PlannerCubit cubit,
     Recipe recipe,
   ) async {
-    final weekdayMapping = {
-      0: DateTime.monday,
-      1: DateTime.tuesday,
-      2: DateTime.wednesday,
-      3: DateTime.thursday,
-      4: DateTime.friday,
-      5: DateTime.saturday,
-      6: DateTime.sunday,
-    };
-    int? day = await showDialog<int>(
+    DateTime? datetime = await showDialog<DateTime>(
       context: context,
       builder: (context) => SelectDialog(
         title: AppLocalizations.of(context)!.addRecipeToPlannerShort,
         cancelText: AppLocalizations.of(context)!.cancel,
-        options: weekdayMapping.entries
-            .map(
-              (e) => SelectDialogOption(
-                e.key,
-                DateFormat.E().dateSymbols.STANDALONEWEEKDAYS[e.value % 7],
-              ),
-            )
-            .toList(),
+        options: List.generate(7, (index) {
+          final day = DateTime.now().add(Duration(days: index));
+          return SelectDialogOption(day, DateFormat.E().format(day));
+        }),
       ),
     );
-    if (day != null) {
+    if (datetime != null) {
       await cubit.add(
         recipe,
-        day >= 0 ? day : null,
+        datetime.compareTo(DateTime.now()) >= 0 ? datetime : null,
       );
     }
   }

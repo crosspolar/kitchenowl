@@ -11,7 +11,7 @@ class Recipe extends Model implements ISuspensionBean {
   final String name;
   final String description;
   final bool isPlanned;
-  final Set<int> plannedDays;
+  final Set<DateTime> plannedDays;
   final int time;
   final int cookTime;
   final int prepTime;
@@ -56,7 +56,7 @@ class Recipe extends Model implements ISuspensionBean {
     if (map.containsKey('tags')) {
       tags = Set.from(map['tags'].map((e) => Tag.fromJson(e)));
     }
-    Set<int> plannedDays = const {};
+    Set<DateTime> plannedDays = const {};
     if (map.containsKey('planned_days')) {
       plannedDays = Set.from(map['planned_days']);
     }
@@ -97,7 +97,7 @@ class Recipe extends Model implements ISuspensionBean {
     bool? public,
     List<RecipeItem>? items,
     Set<Tag>? tags,
-    Set<int>? plannedDays,
+    Set<DateTime>? plannedDays,
     int? householdId,
   }) =>
       Recipe(
