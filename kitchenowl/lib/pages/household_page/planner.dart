@@ -215,8 +215,7 @@ class _PlannerPageState extends State<PlannerPage> {
                                           onPressed: () {
                                             cubit.remove(
                                               plan.recipe,
-                                              DateTime.now()
-                                                  .add(Duration(days: day)),
+                                              plan.datetime,
                                             );
                                           },
                                           onLongPressed: () => _openRecipePage(
