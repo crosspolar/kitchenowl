@@ -45,9 +45,8 @@ def addPlannedRecipe(args, household_id):
     
     datetime = args["datetime"] if "datetime" in args else -1
     planner = Planner.find_by_datetime_day(household_id, recipe_id=recipe.id, datetime=datetime)
-
     if not planner:
-        if datetime >= dt.now(timezone.utc):
+        if isinstance(datetime, dt) and datetime.astimezone() >= dt.now(timezone.utc):
             # TODO not sure about the missing-value
             old = Planner.find_by_datetime_day(household_id, recipe_id=recipe.id, datetime=-1)
             if old:
