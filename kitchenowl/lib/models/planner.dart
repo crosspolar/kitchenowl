@@ -15,7 +15,7 @@ class RecipePlan extends Model {
   factory RecipePlan.fromJson(Map<String, dynamic> map) {
     return RecipePlan(
       recipe: Recipe.fromJson(map['recipe']),
-      datetime: map['datetime'],
+      datetime: DateTime.fromMillisecondsSinceEpoch(map["datetime"]),
       yields: map['yields'],
     );
   }
