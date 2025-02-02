@@ -57,7 +57,7 @@ class Recipe extends Model implements ISuspensionBean {
       tags = Set.from(map['tags'].map((e) => Tag.fromJson(e)));
     }
     Set<DateTime> plannedDays = const {};
-    if (map.containsKey('planned_days')) {
+    if (map.containsKey('planned_days') && map['planned_days'] is DateTime) {
       plannedDays = Set.from(map['planned_days']);
     }
 
