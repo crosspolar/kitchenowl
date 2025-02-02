@@ -34,7 +34,7 @@ extension PlannerApi on ApiService {
     DateTime? datetime,
   ) async {
     final body = {};
-    if (datetime != null) body['datetime'] = datetime;
+    if (datetime != null) body['datetime'] = datetime.toIso8601String();
     final res = await delete(
       '${householdPath(household)}$baseRoute/recipe/${recipe.id}',
       body: jsonEncode(body),
