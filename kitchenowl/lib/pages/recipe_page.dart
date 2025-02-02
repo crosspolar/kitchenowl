@@ -37,6 +37,11 @@ class RecipePage extends StatefulWidget {
   _RecipePageState createState() => _RecipePageState();
 }
 
+DateTime endOfDay() {
+  DateTime nowUtc = DateTime.now().toUtc();
+  return DateTime.utc(nowUtc.year, nowUtc.month, nowUtc.day, 23, 59, 59);
+}
+
 class _RecipePageState extends State<RecipePage> {
   late RecipeCubit cubit;
 
@@ -348,7 +353,7 @@ class _RecipePageState extends State<RecipePage> {
                                               AppLocalizations.of(context)!
                                                   .cancel,
                                           options: List.generate(7, (index) {
-                                            final day = DateTime.now()
+                                            final day = endOfDay()
                                                 .add(Duration(days: index));
                                             return SelectDialogOption(day,
                                                 DateFormat.EEEE().format(day));
@@ -356,10 +361,9 @@ class _RecipePageState extends State<RecipePage> {
                                         ));
                                 if (datetime != null) {
                                   await cubit.addRecipeToPlanner(
-                                    datetime:
-                                        datetime.compareTo(DateTime.now()) >= 0
-                                            ? datetime
-                                            : null,
+                                    datetime: datetime.isAfter(DateTime.now())
+                                        ? datetime
+                                        : null,
                                     updateOnAdd: widget.updateOnPlanningEdit,
                                   );
                                 }

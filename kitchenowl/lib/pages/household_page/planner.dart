@@ -38,20 +38,15 @@ class _PlannerPageState extends State<PlannerPage> {
     super.dispose();
   }
 
+  DateTime endOfDay() {
+    DateTime nowUtc = DateTime.now().toUtc();
+    return DateTime.utc(nowUtc.year, nowUtc.month, nowUtc.day, 23, 59, 59);
+  }
+
   @override
   Widget build(BuildContext context) {
     final cubit = BlocProvider.of<PlannerCubit>(context);
     final household = BlocProvider.of<HouseholdCubit>(context).state.household;
-
-    final weekdayMapping = {
-      0: DateTime.monday,
-      1: DateTime.tuesday,
-      2: DateTime.wednesday,
-      3: DateTime.thursday,
-      4: DateTime.friday,
-      5: DateTime.saturday,
-      6: DateTime.sunday,
-    };
 
     return SafeArea(
       child: Scrollbar(
@@ -174,7 +169,7 @@ class _PlannerPageState extends State<PlannerPage> {
                               ),
                             for (int day = 0; day < 7; day++)
                               for (final plan in state.getPlannedOfDatetimeDay(
-                                  DateTime.now().add(Duration(days: day))))
+                                  endOfDay().add(Duration(days: day))))
                                 KitchenOwlFractionallySizedBox(
                                   widthFactor: (1 /
                                       DynamicStyling.itemCrossAxisCount(
@@ -191,13 +186,13 @@ class _PlannerPageState extends State<PlannerPage> {
                                     children: [
                                       if (plan ==
                                           state.getPlannedOfDatetimeDay(
-                                              DateTime.now()
+                                              endOfDay()
                                                   .add(Duration(days: day)))[0])
                                         Padding(
                                           padding:
                                               const EdgeInsets.only(top: 5),
                                           child: Text(
-                                            '${DateFormat.E().dateSymbols.STANDALONEWEEKDAYS[weekdayMapping[day]! % 7]}:',
+                                            '${DateFormat.EEEE().format(endOfDay().add(Duration(days: day)))}:',
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .bodyLarge,
@@ -404,7 +399,7 @@ class _PlannerPageState extends State<PlannerPage> {
         title: AppLocalizations.of(context)!.addRecipeToPlannerShort,
         cancelText: AppLocalizations.of(context)!.cancel,
         options: List.generate(7, (index) {
-          final day = DateTime.now().add(Duration(days: index));
+          final day = endOfDay().add(Duration(days: index));
           return SelectDialogOption(day, DateFormat.EEEE().format(day));
         }),
       ),
@@ -412,7 +407,7 @@ class _PlannerPageState extends State<PlannerPage> {
     if (datetime != null) {
       await cubit.add(
         recipe,
-        datetime.compareTo(DateTime.now()) >= 0 ? datetime : null,
+        datetime.isAfter(DateTime.now()) ? datetime : null,
       );
     }
   }
